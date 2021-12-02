@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.chatapp.ui.login.LoginFragment"
+        android:label="LoginFragment"
+        tool:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_channelFragment"
+            app:destination="@id/channelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/channelFragment"
+        android:name="com.example.chatapp.ui.channel.ChannelFragment"
+        android:label="ChannelFragment"
+        tool:layout="@layout/fragment_channel">
+        <action
+            android:id="@+id/action_channelFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_channelFragment_to_createChannelDialog"
+            app:destination="@id/createChannelDialog" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.chatapp.ui.chat.ChatFragment"
+        android:label="ChatFragment"
+        tool:layout="@layout/fragment_chat">
+        <argument
+            android:name="channelId"
+            app:argType="string" />
+    </fragment>
+    <dialog
+        android:id="@+id/createChannelDialog"
+        android:name="com.example.chatapp.ui.channel.CreateChannelDialog"
+        android:label="CreateChannelDialog"
+        tool:layout="@layout/dialog_channel_name"/>
+</navigation>
